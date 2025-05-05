@@ -1,0 +1,4 @@
+repository "Fantasia/Fantasia@7972364425598@cloud"
+  path "/"
+    br "/main"
+    co "/main"
