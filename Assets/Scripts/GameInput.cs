@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 /// <summary>
 /// To handle the new input system
@@ -8,6 +10,8 @@ using UnityEngine;
 public class GameInput : MonoBehaviour
 {
     private PlayerInputAction playerActions;
+
+    public event EventHandler OnCollectWeapon;
 
     private void Awake()
     {
@@ -20,7 +24,7 @@ public class GameInput : MonoBehaviour
 
     private void Collect_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
-        throw new System.NotImplementedException();
+        OnCollectWeapon?.Invoke(this,EventArgs.Empty);
     }
 
     public Vector2 GetMovementVectorNormalized()

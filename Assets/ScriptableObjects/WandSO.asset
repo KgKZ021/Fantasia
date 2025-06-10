@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5edd54b924b0433baeb42f726df1361, type: 3}
   m_Name: WandSO
   m_EditorClassIdentifier: 
-  prefab: {fileID: -8679921383154817045, guid: 1caa7a0ce1baf3743a4b3ac1fea82037, type: 3}
+  prefab: {fileID: 2920757627186929850, guid: 6bba09f7fdfcd5147b88bb3fa1e7b726, type: 3}
   weaponName: Wand
   duration: 3
   baseDamage: 4

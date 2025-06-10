@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5edd54b924b0433baeb42f726df1361, type: 3}
   m_Name: PotionRedSO
   m_EditorClassIdentifier: 
-  prefab: {fileID: -8679921383154817045, guid: ad609bbd3a8958a46a9d1dd9509dcafe, type: 3}
+  prefab: {fileID: 2920757627186929850, guid: f8d169af3420a1347afce468a4161eb7, type: 3}
   weaponName: Wand
   duration: 2
   baseDamage: 7

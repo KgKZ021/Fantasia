@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5edd54b924b0433baeb42f726df1361, type: 3}
   m_Name: DaggerSO
   m_EditorClassIdentifier: 
-  prefab: {fileID: -8679921383154817045, guid: 36d4bb14204386e4cbe4ea4da715f3d2, type: 3}
+  prefab: {fileID: 2920757627186929850, guid: 9dd7c34b8b8a1f54c888ffa691e1b2be, type: 3}
   weaponName: Dagger
   duration: 4
   baseDamage: 4

@@ -18,7 +18,7 @@ public enum DamageType
 [CreateAssetMenu]
 public class WeaponsSO : ScriptableObject
 {
-    public Transform prefab;
+    public GameObject prefab;
     public string weaponName;
     public float duration;
     public float baseDamage;

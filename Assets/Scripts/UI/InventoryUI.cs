@@ -14,6 +14,17 @@ public class InventoryUI : MonoBehaviour
 
     private void UpdateVisual()
     {
-
+        foreach (Transform child in container)
+        {
+            if (child == inventoryTemplate) continue;
+            Destroy(child.gameObject);
+                
+            foreach (WeaponsSO weaponsSO in WeaponInventory.Instance.GetWeaponSOList())
+            {
+                Transform inventoryTransform = Instantiate(inventoryTemplate,container);
+                inventoryTransform.gameObject.SetActive(true);
+                inventoryTransform.GetComponent<InventroySingleUI>().SetWeaponSO(weaponsSO);
+            }
+        }
     }
 }

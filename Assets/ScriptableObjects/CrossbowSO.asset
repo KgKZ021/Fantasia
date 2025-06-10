@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5edd54b924b0433baeb42f726df1361, type: 3}
   m_Name: CrossbowSO
   m_EditorClassIdentifier: 
-  prefab: {fileID: -8679921383154817045, guid: 64a2a944d2d6c8f40902157eee37e5bc, type: 3}
+  prefab: {fileID: 2920757627186929850, guid: fed99f588840d624da827b4d78eac6c7, type: 3}
   weaponName: Crossbow
   duration: 2
   baseDamage: 3

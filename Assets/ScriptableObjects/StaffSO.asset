@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5edd54b924b0433baeb42f726df1361, type: 3}
   m_Name: StaffSO
   m_EditorClassIdentifier: 
-  prefab: {fileID: -8679921383154817045, guid: d4272933dc24e2e43be5e68ee67d6c74, type: 3}
+  prefab: {fileID: 2920757627186929850, guid: 03fdb93e647b0e647b9555c411300515, type: 3}
   weaponName: Staff
   duration: 3
   baseDamage: 5

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5edd54b924b0433baeb42f726df1361, type: 3}
   m_Name: AxeSO
   m_EditorClassIdentifier: 
-  prefab: {fileID: -8679921383154817045, guid: 9e69a6cf05f7c1e4895316f8158f6f23, type: 3}
+  prefab: {fileID: 2920757627186929850, guid: b1f7870726f74004481e02e1d23542c0, type: 3}
   weaponName: Axe
   duration: 5
   baseDamage: 6

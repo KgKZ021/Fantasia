@@ -5,15 +5,33 @@ using System;
 
 public class WeaponInventory : MonoBehaviour
 {
+    public static WeaponInventory Instance {  get; private set; }
+
     private int maxSlots = 3;
-    public List<WeaponsSO> storedWeapons;
+    private float weaponDuration;
+
+    [SerializeField]private List<WeaponsSO> storedWeapons;
 
     public event EventHandler OnInventoryChanged;
 
 
     private void Awake()
     {
+        Instance = this;
         storedWeapons = new List<WeaponsSO>();
+    }
+
+    private void Update()
+    {
+        //weaponDuration -= Time.deltaTime;
+
+        //if (weaponDuration <= 0f)
+        //{
+        //    foreach(WeaponsSO weaponSO in storedWeapons)
+        //    {
+        //        weaponDuration = weaponSO.duration;
+        //    }
+        //}
     }
 
     public bool TryAddPowerUp(WeaponsSO weaponSO)
@@ -42,6 +60,11 @@ public class WeaponInventory : MonoBehaviour
         //weapon.Activate(player);
         storedWeapons.RemoveAt(index);
         OnInventoryChanged?.Invoke(this,EventArgs.Empty);
+    }
+
+    public List<WeaponsSO> GetWeaponSOList()
+    {
+        return storedWeapons;
     }
 }
 
