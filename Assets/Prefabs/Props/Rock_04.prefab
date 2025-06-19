@@ -116,6 +116,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7470407055726708740}
   - component: {fileID: 5397063499921211884}
+  - component: {fileID: 1049608675831317439}
   m_Layer: 0
   m_Name: Rock_04
   m_TagString: Untagged
@@ -163,6 +164,27 @@ LODGroup:
     renderers:
     - renderer: {fileID: 3946390467489770242}
   m_Enabled: 1
+--- !u!65 &1049608675831317439
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 976284670533495892}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2558094363434854500
 GameObject:
   m_ObjectHideFlags: 0

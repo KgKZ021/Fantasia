@@ -282,6 +282,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7467453392291220299}
   - component: {fileID: 7578381951784711967}
+  - component: {fileID: -3630285570702503313}
   m_Layer: 0
   m_Name: Pot_01
   m_TagString: Untagged
@@ -335,6 +336,27 @@ LODGroup:
     renderers:
     - renderer: {fileID: 430784064369363718}
   m_Enabled: 1
+--- !u!65 &-3630285570702503313
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8104851772711207296}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &8023828513750665753
 PrefabInstance:
   m_ObjectHideFlags: 0

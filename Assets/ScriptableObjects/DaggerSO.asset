@@ -14,7 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 2920757627186929850, guid: 9dd7c34b8b8a1f54c888ffa691e1b2be, type: 3}
   weaponName: Dagger
-  duration: 4
+  duration: 2
   baseDamage: 4
+  speed: 10
+  pierce: 0
   weaponType: 0
   damageType: 1

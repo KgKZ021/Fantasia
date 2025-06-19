@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
     [SerializeField] private GameInput gameInput;
     [SerializeField] private LayerMask layerMask;
     [SerializeField] private Transform weaponHoldPoint;
+    [SerializeField] private Rigidbody playerRigidBody;
 
     private bool isRunning;
     private Vector3 lastInteractDir;
@@ -34,8 +35,12 @@ public class Player : MonoBehaviour
             Debug.LogError("There is more than one Player Instance!");
         }
         Instance = this;
+
+        playerRigidBody = GetComponent<Rigidbody>();
+        
     }
 
+    
     private void Start()
     {
         gameInput.OnCollectWeapon += GameInput_OnCollectWeapon;
@@ -52,7 +57,7 @@ public class Player : MonoBehaviour
     private void FixedUpdate()
     {
         Movements();
-        WeaponCollection();
+        //WeaponCollection();
         
     }
 
@@ -64,16 +69,22 @@ public class Player : MonoBehaviour
     private void Movements()
     {
         Vector2 inputVector = gameInput.GetMovementVectorNormalized();
-
-        Vector3 moveDir = new Vector3(inputVector.x, 0f, inputVector.y);
+        
+;        Vector3 moveDir = new Vector3(inputVector.x, 0f, inputVector.y).normalized;
 
         //collision detection
         float moveDistance = moveSpeed * Time.deltaTime;
-        float playerRadius = 0.7f;
-        float playerHeight = 2f;
+        //float playerRadius = 0.7f;
+        //float playerHeight = 2f;
 
-        bool canMove = !Physics.CapsuleCast(transform.position, transform.position + Vector3.up * playerHeight, playerRadius, moveDir, moveDistance);
+        
+        //bool canMove = !Physics.CapsuleCast(transform.position, transform.position + Vector3.up * playerHeight, playerRadius, moveDir, moveDistance);
 
+        //if (canMove)
+        //{
+        //Vector3 targetPos = moveDir * moveDistance;
+        //playerRigidBody.MovePosition(targetPos);
+        //}
         //if (!canMove)
         //{
         //    //if cannot move towards moveDir,
@@ -96,7 +107,7 @@ public class Player : MonoBehaviour
         //        }
         //        else
         //        {
-                    
+
 
         //        }
         //    }
@@ -104,11 +115,23 @@ public class Player : MonoBehaviour
 
         //if (canMove)
         //{
-            transform.position += moveDir * moveDistance; 
-       // }
+        //transform.position += moveDir * moveDistance;
+        //}
 
+        bool isMoving = moveDir != Vector3.zero;
 
-        isRunning = moveDir != Vector3.zero; //(0,0,0)
+        if (isMoving)
+        {
+            playerRigidBody.velocity = moveDir * moveSpeed;
+        //    float rotateSpeed = 7f;
+        //    transform.forward = Vector3.Slerp(transform.forward, moveDir, Time.deltaTime * rotateSpeed);
+        }
+        else
+        {
+            playerRigidBody.velocity = Vector3.zero;
+        }
+
+        isRunning = isMoving;
 
         float rotateSpeed = 7f;
         transform.forward = Vector3.Slerp(transform.forward, moveDir, Time.deltaTime * rotateSpeed); // interpolate between two vectors and with a flaot value
@@ -193,4 +216,12 @@ public class Player : MonoBehaviour
         return pickedWeapon != null;
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log("Collided with: " + collision.gameObject.name);
+    }
+
+
 }
+
+

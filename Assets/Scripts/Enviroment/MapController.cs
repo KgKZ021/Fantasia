@@ -15,10 +15,11 @@ public class MapController : MonoBehaviour
 
 
     [Header("Optimization")]
-    [SerializeField] private List<GameObject> spawnedChunks;
+   
     [SerializeField] private float maxOptimizationDistance;
     [SerializeField] private float optimizerCooldownDuration;
 
+    public List<GameObject> spawnedChunks;
     private GameObject latestChunk;
     private float optimizationDistance;
     private float optimizerCooldown;
@@ -89,7 +90,7 @@ public class MapController : MonoBehaviour
     {
         string directionString = direction.ToString();
         Vector3 targetPos = currentChunk.transform.Find("StaticPoints/"+directionString).position;
-        Debug.Log("target pos"+targetPos);
+        
 
         Collider[] hits = Physics.OverlapSphere(targetPos, checkRadius, layerMask);
         if (hits.Length == 0)

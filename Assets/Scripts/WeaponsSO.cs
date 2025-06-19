@@ -22,6 +22,8 @@ public class WeaponsSO : ScriptableObject
     public string weaponName;
     public float duration;
     public float baseDamage;
+    public float speed;
+    public int pierce;
     public WeaponType weaponType;
     public DamageType damageType;
 }

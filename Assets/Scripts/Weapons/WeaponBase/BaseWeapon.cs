@@ -5,27 +5,44 @@ using UnityEngine;
 public class BaseWeapon : MonoBehaviour
 {
     [SerializeField] private WeaponsSO weaponsSO;
+    [SerializeField] protected GameInput gameInput;
 
     private float weaponTimer;
-    private bool isHeldByPlayer;
+    //private bool isHeldByPlayer;
     private Player player;
 
-    private void Update()
+    protected virtual void Start()
     {
-        
-        if (isHeldByPlayer)
-        {
-            weaponTimer -= Time.deltaTime;
-            if (weaponTimer <= 0)
-            {
-                Debug.Log($"[TIMER EXPIRED] Destroying weapon: {gameObject.name}");
-               
-                DestorySelf();
-               
+        weaponTimer = weaponsSO.duration;
+    }
+    protected virtual void Update()
+    {
 
-                isHeldByPlayer = false;
-            }
+        //if (isHeldByPlayer)
+        //{
+        //    weaponTimer -= Time.deltaTime;
+        //    if (weaponTimer <= 0)
+        //    {
+        //        Debug.Log($"[TIMER EXPIRED] Destroying weapon: {gameObject.name}");
+
+        //        DestorySelf();
+
+
+        //        isHeldByPlayer = false;
+        //    }
+        //}
+
+        weaponTimer -= Time.deltaTime;
+        if (weaponTimer <= 0)
+        {
+            Attack();
         }
+
+    }
+
+    protected virtual void Attack()
+    {
+        weaponTimer = weaponsSO.duration;
     }
     public virtual void Collected(Player player)
     {
@@ -55,10 +72,10 @@ public class BaseWeapon : MonoBehaviour
 
         player.SetPickededWeapon(this);
 
-        transform.parent = player.GetWeaponFollowTransform(); 
+        transform.parent = player.GetWeaponFollowTransform();
         transform.localPosition = Vector3.zero;
 
-        isHeldByPlayer = true;
+        //isHeldByPlayer = true;
         weaponTimer = weaponsSO.duration;
         Debug.Log($"[SetWeaponParent] {gameObject.name} is now held by player. Timer = {weaponTimer}");
 
@@ -89,5 +106,5 @@ public class BaseWeapon : MonoBehaviour
     //        return false;
     //    }
     //}
-    
+
 }
