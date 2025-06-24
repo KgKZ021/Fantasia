@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class MonsterMovement : MonoBehaviour
 {
-    [SerializeField] private float moveSpeed;
+    
+    [SerializeField] protected MonsterSO monsterSO;
+
     private Transform player;
 
 
@@ -15,7 +17,7 @@ public class MonsterMovement : MonoBehaviour
     private void Update()
     {
 
-        transform.position = Vector3.MoveTowards(transform.position, player.position, moveSpeed * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, player.position, monsterSO.MoveSpeed * Time.deltaTime);
         transform.LookAt(player);
     }
 }

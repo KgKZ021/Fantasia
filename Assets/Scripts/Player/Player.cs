@@ -11,7 +11,7 @@ public class Player : MonoBehaviour
 {
     public static Player Instance { get; private set; }
 
-    [SerializeField] private float moveSpeed=7f;
+    [SerializeField] private PlayerSO playerSO;
     [SerializeField] private GameInput gameInput;
     [SerializeField] private LayerMask layerMask;
     [SerializeField] private Transform weaponHoldPoint;
@@ -70,59 +70,13 @@ public class Player : MonoBehaviour
     {
         Vector2 inputVector = gameInput.GetMovementVectorNormalized();
         
-;        Vector3 moveDir = new Vector3(inputVector.x, 0f, inputVector.y).normalized;
-
-        //collision detection
-        float moveDistance = moveSpeed * Time.deltaTime;
-        //float playerRadius = 0.7f;
-        //float playerHeight = 2f;
-
+;       Vector3 moveDir = new Vector3(inputVector.x, 0f, inputVector.y).normalized;
         
-        //bool canMove = !Physics.CapsuleCast(transform.position, transform.position + Vector3.up * playerHeight, playerRadius, moveDir, moveDistance);
-
-        //if (canMove)
-        //{
-        //Vector3 targetPos = moveDir * moveDistance;
-        //playerRigidBody.MovePosition(targetPos);
-        //}
-        //if (!canMove)
-        //{
-        //    //if cannot move towards moveDir,
-        //    //attempt to move (X) only
-        //    Vector3 moveDirX = new Vector3(moveDir.x, 0f, 0f).normalized;
-        //    //moveDir.x=!=0 is only if we are attempting to move in x direction
-        //    canMove = moveDir.x != 0 && !Physics.CapsuleCast(transform.position, transform.position + Vector3.up * playerHeight, playerRadius, moveDirX, moveDistance);
-        //    if (canMove)
-        //    {
-        //        moveDir = moveDirX; 
-        //    }
-        //    else
-        //    {
-        //        //if Cannot move only on the X, attempt Z
-        //        Vector3 moveDirZ = new Vector3(0f, 0f, moveDir.z).normalized;
-        //        canMove = !Physics.CapsuleCast(transform.position, transform.position + Vector3.up * playerHeight, playerRadius, moveDirZ, moveDistance);
-        //        if (canMove)
-        //        {
-        //            moveDir = moveDirZ; 
-        //        }
-        //        else
-        //        {
-
-
-        //        }
-        //    }
-        //}
-
-        //if (canMove)
-        //{
-        //transform.position += moveDir * moveDistance;
-        //}
-
         bool isMoving = moveDir != Vector3.zero;
 
         if (isMoving)
         {
-            playerRigidBody.velocity = moveDir * moveSpeed;
+            playerRigidBody.velocity = moveDir *playerSO.MoveSpeed;
         //    float rotateSpeed = 7f;
         //    transform.forward = Vector3.Slerp(transform.forward, moveDir, Time.deltaTime * rotateSpeed);
         }

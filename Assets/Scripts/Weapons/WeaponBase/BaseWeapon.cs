@@ -13,7 +13,7 @@ public class BaseWeapon : MonoBehaviour
 
     protected virtual void Start()
     {
-        weaponTimer = weaponsSO.duration;
+        weaponTimer = weaponsSO.Duration;
     }
     protected virtual void Update()
     {
@@ -42,7 +42,7 @@ public class BaseWeapon : MonoBehaviour
 
     protected virtual void Attack()
     {
-        weaponTimer = weaponsSO.duration;
+        weaponTimer = weaponsSO.Duration;
     }
     public virtual void Collected(Player player)
     {
@@ -76,7 +76,7 @@ public class BaseWeapon : MonoBehaviour
         transform.localPosition = Vector3.zero;
 
         //isHeldByPlayer = true;
-        weaponTimer = weaponsSO.duration;
+        weaponTimer = weaponsSO.Duration;
         Debug.Log($"[SetWeaponParent] {gameObject.name} is now held by player. Timer = {weaponTimer}");
 
     }

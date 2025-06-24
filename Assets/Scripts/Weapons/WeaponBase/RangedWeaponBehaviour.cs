@@ -7,9 +7,29 @@ using UnityEngine;
 /// </summary>
 public class RangedWeaponBehaviour : MonoBehaviour
 {
+    [SerializeField]protected WeaponsSO weaponSO;
+
     protected Vector3 weaponDir;
     private float destoryAfterSeconds = 3;
 
+    //Current Stats
+    protected float currentDamage;
+    protected float currentSpeed;
+    protected float currentDuration;
+    protected float currentPierce;
+
+    private void Awake()
+    {
+        if (weaponSO == null)
+        {
+            Debug.LogError($"{gameObject.name}: weaponSO is not assigned!");
+            return;
+        }
+        currentDamage = weaponSO.BaseDamage;
+        currentSpeed = weaponSO.Speed;
+        currentDuration = weaponSO.Duration;
+        currentPierce = weaponSO.Pierce;
+    }
     protected virtual void Start()
     {
         Destroy(gameObject, destoryAfterSeconds);
@@ -73,5 +93,33 @@ public class RangedWeaponBehaviour : MonoBehaviour
         transform.localScale = scale;
         transform.rotation = Quaternion.Euler(rotation);
     }
+    protected virtual void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Monster"))
+        {
+            MonsterStats monster = other.GetComponent<MonsterStats>();
+            monster.TakeDamage(currentDamage);
 
+            ReducePierce();
+        }
+
+        else if(other.CompareTag("Prop"))
+        {
+            if(other.gameObject.TryGetComponent(out BreakableProps breakableProps))
+            {
+                breakableProps.TakeDamage(currentDamage);
+
+                ReducePierce();
+            }
+        }
+    }
+
+    private void ReducePierce()
+    {
+        currentPierce--;
+        if (currentPierce <= 0)
+        {
+            Destroy(gameObject);
+        }
+    }
 }

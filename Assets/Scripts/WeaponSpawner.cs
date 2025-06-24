@@ -32,7 +32,7 @@ public class WeaponSpawner : MonoBehaviour
         Vector3 spawnPos = new Vector3(player.position.x + circle.x, 0f, player.position.z + circle.y);
 
         WeaponsSO randomWeapon = weaponPool[Random.Range(0, weaponPool.Count)];
-        GameObject weapon = Instantiate(randomWeapon.prefab, spawnPos, Quaternion.identity);
+        GameObject weapon = Instantiate(randomWeapon.Prefab, spawnPos, Quaternion.identity);
         weapon.layer = 6;
 
         Destroy(weapon,10f);

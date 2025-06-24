@@ -281,9 +281,11 @@ GameObject:
   m_Component:
   - component: {fileID: 3143887863610871170}
   - component: {fileID: 3191673824099646154}
+  - component: {fileID: 1108063385012005296}
+  - component: {fileID: -5934438033314837955}
   m_Layer: 0
   m_Name: Fireplace_02
-  m_TagString: Untagged
+  m_TagString: Prop
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -334,6 +336,36 @@ LODGroup:
     renderers:
     - renderer: {fileID: 8993811368079005769}
   m_Enabled: 1
+--- !u!114 &1108063385012005296
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8318271028270670188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b902a0c372487f48901b5ac3d90623d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 10
+--- !u!114 &-5934438033314837955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8318271028270670188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f9e51a6ed7e2964fb27264aae9c8172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  drops:
+  - name: Red Potion
+    itemPrefab: {fileID: 2920757627186929850, guid: f8d169af3420a1347afce468a4161eb7,
+      type: 3}
+    dropRate: 50
 --- !u!1001 &3596239532300378830
 PrefabInstance:
   m_ObjectHideFlags: 0

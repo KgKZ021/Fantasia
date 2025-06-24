@@ -14,7 +14,7 @@ public class DaggerController : BaseWeapon
     {
         base.Attack();
 
-        GameObject spawnedDagger = Instantiate(GetWeaponSO().prefab);
+        GameObject spawnedDagger = Instantiate(GetWeaponSO().Prefab);
         spawnedDagger.transform.position = transform.position;
 
         Vector2 inputVector = gameInput.GetMovementVectorNormalized();

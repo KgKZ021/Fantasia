@@ -17,7 +17,7 @@ public class InventroySingleUI : MonoBehaviour
 
     public void SetWeaponSO(WeaponsSO weaponsSO)
     {
-        weaponNameText.text = weaponsSO.weaponName;
+        weaponNameText.text = weaponsSO.WeaponName;
 
         Transform iconTransform = Instantiate(icon,iconContainer);
         iconTransform.gameObject.SetActive(true);

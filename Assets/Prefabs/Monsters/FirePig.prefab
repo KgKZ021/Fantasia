@@ -157,6 +157,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: FirePig
       objectReference: {fileID: 0}
+    - target: {fileID: 7930717151420687186, guid: 5049c8e9ca435fa48b5dfc16fdf1d40e,
+        type: 3}
+      propertyPath: m_TagString
+      value: Monster
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -177,6 +182,14 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 451660138144571379}
+    - targetCorrespondingSourceObject: {fileID: 7930717151420687186, guid: 5049c8e9ca435fa48b5dfc16fdf1d40e,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -8510315581944029429}
+    - targetCorrespondingSourceObject: {fileID: 7930717151420687186, guid: 5049c8e9ca435fa48b5dfc16fdf1d40e,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -5989249418449290253}
   m_SourcePrefab: {fileID: 100100000, guid: 5049c8e9ca435fa48b5dfc16fdf1d40e, type: 3}
 --- !u!4 &762199028175614126 stripped
 Transform:
@@ -244,5 +257,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a4f1426d62e0a54b86ac115d22f5db2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 2
-  player: {fileID: 0}
+  monsterSO: {fileID: 11400000, guid: e705afc8469202c43ba6a419a5073019, type: 2}
+--- !u!114 &-8510315581944029429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8132580367474895110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82e55680d80dafe42a31b871f901f5c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  monsterSO: {fileID: 11400000, guid: e705afc8469202c43ba6a419a5073019, type: 2}
+--- !u!114 &-5989249418449290253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8132580367474895110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f9e51a6ed7e2964fb27264aae9c8172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  drops:
+  - name: Orb Sand
+    itemPrefab: {fileID: 3460875656508149677, guid: ea25565b12d651e4db46dd587ef8cdbf,
+      type: 3}
+    dropRate: 50
