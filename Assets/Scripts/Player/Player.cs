@@ -11,7 +11,7 @@ public class Player : MonoBehaviour
 {
     public static Player Instance { get; private set; }
 
-    [SerializeField] private PlayerSO playerSO;
+    
     [SerializeField] private GameInput gameInput;
     [SerializeField] private LayerMask layerMask;
     [SerializeField] private Transform weaponHoldPoint;
@@ -21,6 +21,7 @@ public class Player : MonoBehaviour
     private Vector3 lastInteractDir;
     private BaseWeapon selectedWeapon;
     private BaseWeapon pickedWeapon;
+    private PlayerStats playerStats;
 
     public event EventHandler<OnSelectedWeaponChangedEventArgs> OnSelectedWeaponChanged;
     public class OnSelectedWeaponChangedEventArgs : EventArgs
@@ -44,6 +45,8 @@ public class Player : MonoBehaviour
     private void Start()
     {
         gameInput.OnCollectWeapon += GameInput_OnCollectWeapon;
+
+        playerStats = GetComponent<PlayerStats>();
     }
 
     private void GameInput_OnCollectWeapon(object sender, EventArgs e)
@@ -76,9 +79,7 @@ public class Player : MonoBehaviour
 
         if (isMoving)
         {
-            playerRigidBody.velocity = moveDir *playerSO.MoveSpeed;
-        //    float rotateSpeed = 7f;
-        //    transform.forward = Vector3.Slerp(transform.forward, moveDir, Time.deltaTime * rotateSpeed);
+            playerRigidBody.velocity = moveDir *playerStats.currentMoveSpeed;
         }
         else
         {

@@ -13,6 +13,6 @@ public class DaggerBehaviour : RangedWeaponBehaviour
 
     private void Update()
     {
-        transform.position += weaponDir * weaponSO.Speed * Time.deltaTime;
+        transform.position += weaponDir * currentSpeed * Time.deltaTime;
     }
 }

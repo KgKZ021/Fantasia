@@ -5,6 +5,7 @@ using UnityEngine.EventSystems;
 
 public class DaggerController : BaseWeapon
 {
+   
     protected override void Start()
     {
         base.Start();
@@ -17,10 +18,12 @@ public class DaggerController : BaseWeapon
         GameObject spawnedDagger = Instantiate(GetWeaponSO().Prefab);
         spawnedDagger.transform.position = transform.position;
 
-        Vector2 inputVector = gameInput.GetMovementVectorNormalized();
+        Vector2 inputVector = GameInput.Instance.GetMovementVectorNormalized();
 
         Vector3 moveDir = new Vector3(inputVector.x, 0f, inputVector.y).normalized;
 
-        spawnedDagger.GetComponent<DaggerBehaviour>().DirectionChecker(new Vector3(gameInput.lastMovedVector.x,0,gameInput.lastMovedVector.y));
+        spawnedDagger.GetComponent<DaggerBehaviour>().DirectionChecker(
+            new Vector3(GameInput.Instance.lastMovedVector.x, 0, GameInput.Instance.lastMovedVector.y)
+        );
     }
 }

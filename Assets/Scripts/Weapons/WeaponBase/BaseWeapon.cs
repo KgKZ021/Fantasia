@@ -5,7 +5,7 @@ using UnityEngine;
 public class BaseWeapon : MonoBehaviour
 {
     [SerializeField] private WeaponsSO weaponsSO;
-    [SerializeField] protected GameInput gameInput;
+    
 
     private float weaponTimer;
     //private bool isHeldByPlayer;
@@ -18,19 +18,7 @@ public class BaseWeapon : MonoBehaviour
     protected virtual void Update()
     {
 
-        //if (isHeldByPlayer)
-        //{
-        //    weaponTimer -= Time.deltaTime;
-        //    if (weaponTimer <= 0)
-        //    {
-        //        Debug.Log($"[TIMER EXPIRED] Destroying weapon: {gameObject.name}");
-
-        //        DestorySelf();
-
-
-        //        isHeldByPlayer = false;
-        //    }
-        //}
+        
 
         weaponTimer -= Time.deltaTime;
         if (weaponTimer <= 0)
@@ -81,30 +69,12 @@ public class BaseWeapon : MonoBehaviour
 
     }
 
-    //public IKitchenObjectParent GetKitchenObjParent()
-    //{
-    //    return kitchenObjParent;
-    //}
-
+    
     public void DestorySelf()
     {
         Player.Instance.ClearWeapon();
         Destroy(gameObject);
     }
 
-
-    //public bool TryGetPlate(out PlateKitchenObj plateKitchenObj)
-    //{
-    //    if (this is PlateKitchenObj)
-    //    {
-    //        plateKitchenObj = this as PlateKitchenObj;
-    //        return true;
-    //    }
-    //    else
-    //    {
-    //        plateKitchenObj = null; //need to set out parameter before exiting function
-    //        return false;
-    //    }
-    //}
-
+   
 }

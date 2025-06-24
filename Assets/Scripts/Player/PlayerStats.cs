@@ -4,14 +4,18 @@ using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
-    [SerializeField] PlayerSO playerSO;
+    PlayerSO playerSO;
 
     //current stats
-    private float currentHealth;
-    private float currentRecovery;
-    private float currentMoveSpeed;
-    private float currentMight;
-    private float currentProjectileSpeed;
+    [HideInInspector] public float currentHealth;
+    [HideInInspector] public float currentRecovery;
+    [HideInInspector] public float currentMoveSpeed;
+    [HideInInspector] public float currentMight;
+    [HideInInspector] public float currentProjectileSpeed;
+    [HideInInspector] public float currentMagnet;
+
+    //Spawned Weapons
+    public List<GameObject> spawnedWeapons;
 
     [Header("Experience/Level")]
     [SerializeField] private int experience = 0;
@@ -38,11 +42,17 @@ public class PlayerStats : MonoBehaviour
 
     private void Awake()
     {
+        playerSO = CharacterSelector.GetData();
+        CharacterSelector.Instance.DestorySingleton();
+
         currentHealth = playerSO.MaxHealth;
         currentRecovery = playerSO.Recovery;
         currentMoveSpeed = playerSO.MoveSpeed;
         currentMight = playerSO.Might;
         currentProjectileSpeed = playerSO.ProjectileSpeed;
+        currentMagnet = playerSO.Magnet;
+
+        SpawnWeapon(playerSO.StartingWeapon);
     }
 
     private void Start()
@@ -60,6 +70,8 @@ public class PlayerStats : MonoBehaviour
         {
             isInvincible = false;
         }
+
+        Recover();
     }
     public void IncreaseExperience(int amount)
     {
@@ -122,5 +134,26 @@ public class PlayerStats : MonoBehaviour
             }
         }
         
+    }
+
+    private void Recover()
+    {
+        if(currentHealth < playerSO.MaxHealth)
+        {
+            currentHealth += currentRecovery * Time.deltaTime;
+
+            //fail safe
+            if(currentHealth > playerSO.MaxHealth)
+            {
+                currentHealth = playerSO.MaxHealth;
+            }
+        }
+    }
+
+    public void SpawnWeapon(GameObject weapon)
+    {
+        GameObject spawnedWeapon = Instantiate(weapon , transform.position,Quaternion.identity);
+        spawnedWeapon.transform.SetParent(transform);
+        spawnedWeapons.Add(spawnedWeapon);
     }
 }
