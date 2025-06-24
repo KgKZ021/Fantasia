@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a70f692a58a4174a8f2b534e5f24220, type: 3}
   m_Name: DaggerCharacter
   m_EditorClassIdentifier: 
-  startingWeapon: {fileID: 4331619139984890417, guid: ac70b814774df3c4486ee974c7b485d4,
+  startingWeapon: {fileID: 8536789069801150916, guid: ac70b814774df3c4486ee974c7b485d4,
     type: 3}
   maxHealth: 1000
   recovery: 1

@@ -257,7 +257,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a4f1426d62e0a54b86ac115d22f5db2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  monsterSO: {fileID: 11400000, guid: e705afc8469202c43ba6a419a5073019, type: 2}
 --- !u!114 &-8510315581944029429
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -271,6 +270,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monsterSO: {fileID: 11400000, guid: e705afc8469202c43ba6a419a5073019, type: 2}
+  currentMoveSpeed: 0
+  currentHealth: 0
+  currentDamage: 0
+  despawnDistance: 50
 --- !u!114 &-5989249418449290253
 MonoBehaviour:
   m_ObjectHideFlags: 0

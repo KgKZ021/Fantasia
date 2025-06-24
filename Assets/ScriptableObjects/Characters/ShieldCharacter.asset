@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a70f692a58a4174a8f2b534e5f24220, type: 3}
   m_Name: ShieldCharacter
   m_EditorClassIdentifier: 
-  startingWeapon: {fileID: 3555415412829261017, guid: f72fdc83d1eefbb4dadf5e36387dbc75,
+  startingWeapon: {fileID: 8536789069801150916, guid: bdef8143b40d65942b27c94282a51922,
     type: 3}
   maxHealth: 1000
   recovery: 1
