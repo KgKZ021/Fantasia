@@ -12,12 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5edd54b924b0433baeb42f726df1361, type: 3}
   m_Name: Shield Level 2
   m_EditorClassIdentifier: 
-  prefab: {fileID: 7082947265978245355, guid: 3617a274030577b4e93ba2482b0c1291, type: 3}
+  prefab: {fileID: 7082947265978245355, guid: 5d9a0cd6ce11ef9488a660cf7b081ec3, type: 3}
   weaponName: Shield
   duration: 2.5
   baseDamage: 5
   speed: 0
   pierce: 0
   level: 2
-  nextLevelPrefab: {fileID: 0}
+  nextLevelPrefab: {fileID: 8536789069801150916, guid: cd2c3d0ced5276b49ad931b02dba16df,
+    type: 3}
+  name: Shield Level 2
+  description: CD reduced to 2.5
   icon: {fileID: 21300000, guid: 3fded348b362a3d42b5e5028e4915e90, type: 3}

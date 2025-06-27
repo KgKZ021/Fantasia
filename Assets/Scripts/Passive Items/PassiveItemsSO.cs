@@ -14,6 +14,12 @@ public class PassiveItemsSO : ScriptableObject
     [SerializeField] private GameObject nextLevelPrefab;
     public GameObject NextLevelPrefab { get => nextLevelPrefab; private set => nextLevelPrefab = value; }
 
+    [SerializeField] new string name;
+    public string Name { get => name; private set => name = value; }
+
+    [SerializeField] string description;
+    public string Description { get => description; private set => description = value; }
+
     [SerializeField] Sprite icon;
     public Sprite Icon { get => icon; private set => icon = value; }
 

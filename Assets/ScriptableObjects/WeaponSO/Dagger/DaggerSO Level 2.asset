@@ -12,12 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5edd54b924b0433baeb42f726df1361, type: 3}
   m_Name: DaggerSO Level 2
   m_EditorClassIdentifier: 
-  prefab: {fileID: 2920757627186929850, guid: 9dd7c34b8b8a1f54c888ffa691e1b2be, type: 3}
+  prefab: {fileID: 2920757627186929850, guid: b2209958b073743429d74e1ad3b05765, type: 3}
   weaponName: Dagger
   duration: 2
   baseDamage: 5
   speed: 15
   pierce: 1
   level: 2
-  nextLevelPrefab: {fileID: 0}
+  nextLevelPrefab: {fileID: 8536789069801150916, guid: 2e02dbe89ff4b6741a681bb16d430150,
+    type: 3}
+  name: Dagger Level 2
+  description: Speed is up by 5
   icon: {fileID: 21300000, guid: ef7d23773058d864c8d3c8d514529e24, type: 3}

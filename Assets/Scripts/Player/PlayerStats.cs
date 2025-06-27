@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.UI;
 
 public class PlayerStats : MonoBehaviour
 {
@@ -149,8 +151,13 @@ public class PlayerStats : MonoBehaviour
     [SerializeField] private int weaponIndex;
     [SerializeField] private int passiveItemIndex;
 
-    public GameObject secondWeaponTest;
-    public GameObject firstPassiveItemTest;
+    [Header("UI")]
+    [SerializeField] private Image healthBar;
+    [SerializeField] private Image expBar;
+    [SerializeField] private TextMeshProUGUI levelText;
+
+   // public GameObject secondWeaponTest;
+   // public GameObject firstPassiveItemTest;
     public GameObject secondPassiveItemTest;
 
     private void Awake()
@@ -168,9 +175,9 @@ public class PlayerStats : MonoBehaviour
         CurrentMagnet = playerSO.Magnet;
 
         SpawnWeapon(playerSO.StartingWeapon);
-        SpawnWeapon(secondWeaponTest);
+        //SpawnWeapon(secondWeaponTest);
 
-        SpawnPassiveItems(firstPassiveItemTest);
+        //SpawnPassiveItems(firstPassiveItemTest);
         SpawnPassiveItems(secondPassiveItemTest);
     }
 
@@ -186,6 +193,10 @@ public class PlayerStats : MonoBehaviour
         GameManager.Instance.currentMagnetDisplay.text = "Magnet: " + currentMagnet;
 
         GameManager.Instance.AssignChosenCharacterUI(playerSO);
+
+        UpdateHealthbar();
+        UpdateExpBar();
+        UpdateLevelText();
     }
 
     private void Update()
@@ -206,6 +217,8 @@ public class PlayerStats : MonoBehaviour
         experience += amount;
 
         LevelUpChecker();
+
+        UpdateExpBar();
     }
 
     private void LevelUpChecker()
@@ -225,6 +238,10 @@ public class PlayerStats : MonoBehaviour
                 }
             }
             experienceCap += experienceCapIncrease;
+
+            UpdateLevelText();
+
+            GameManager.Instance.StartLevelUp();
         }
     }
 
@@ -243,6 +260,8 @@ public class PlayerStats : MonoBehaviour
                 Kill();
                
             }
+
+            UpdateHealthbar();
         }
         
     }
@@ -318,5 +337,20 @@ public class PlayerStats : MonoBehaviour
         passiveItemIndex++;
     }
 
+    private void UpdateHealthbar()
+    {
+        healthBar.fillAmount = currentHealth / playerSO.MaxHealth;
+
+    }
+
+    private void UpdateExpBar()
+    {
+        expBar.fillAmount = (float)experience / experienceCap;
+    }
+
+    private void UpdateLevelText()
+    {
+        levelText.text = "LV " + level.ToString();
+    }
 
 }

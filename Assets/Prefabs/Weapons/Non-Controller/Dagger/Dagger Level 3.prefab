@@ -150,7 +150,7 @@ PrefabInstance:
     - target: {fileID: 7206958459557730559, guid: 5b7c28b3f7ac88a4fb3aad9a79608c45,
         type: 3}
       propertyPath: m_Name
-      value: Dagger Level 2
+      value: Dagger Level 3
       objectReference: {fileID: 0}
     - target: {fileID: 7206958459557730559, guid: 5b7c28b3f7ac88a4fb3aad9a79608c45,
         type: 3}
@@ -217,7 +217,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76bebfdd87b1833419beb06bbb831da5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponSO: {fileID: 11400000, guid: 8e5f61a29dac120429f89104602c5b2e, type: 2}
+  weaponSO: {fileID: 11400000, guid: 43cffeb27fd0aea47af8cd55f3985fff, type: 2}
 --- !u!54 &3926159876844712024
 Rigidbody:
   m_ObjectHideFlags: 0
