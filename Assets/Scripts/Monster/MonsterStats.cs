@@ -32,7 +32,7 @@ public class MonsterStats : MonoBehaviour
         Vector3 flatPlayer = new Vector3(player.position.x, 0f, player.position.z);
         float distance = Vector3.Distance(flatMonster, flatPlayer);
 
-        Debug.Log(distance);
+       
         if (distance >= despawnDistance)
         {
             ReturnMonster();

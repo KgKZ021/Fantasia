@@ -25,4 +25,10 @@ public class PlayerSO : ScriptableObject
 
     [SerializeField] private float magnet;
     public float Magnet { get => magnet; set => magnet = value; }
+
+    [SerializeField] private Sprite icon;
+    public Sprite Icon { get => icon; set => icon = value; }
+
+    [SerializeField] private new string name;
+    public string Name { get => name;   set => name = value; }
 }

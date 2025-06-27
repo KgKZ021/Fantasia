@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class DropRateManager : MonoBehaviour
 {
+
+
     [System.Serializable]
     public class Drops
     {
@@ -16,6 +18,11 @@ public class DropRateManager : MonoBehaviour
 
     private void OnDestroy()
     {
+        if(!gameObject.scene.isLoaded) //stops the spawning error
+        {
+            return;
+        }
+
         float randomNum = UnityEngine.Random.Range(0f, 100f);
         List<Drops> possibleDrops = new List<Drops>();
 

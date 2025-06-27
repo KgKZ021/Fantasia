@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5edd54b924b0433baeb42f726df1361, type: 3}
+  m_Name: Shield
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 7082947265978245355, guid: 3617a274030577b4e93ba2482b0c1291, type: 3}
+  weaponName: Shield
+  duration: 3
+  baseDamage: 5
+  speed: 0
+  pierce: 0
+  level: 1
+  nextLevelPrefab: {fileID: 8536789069801150916, guid: e2428ced7963d364089f2cf697afe749,
+    type: 3}
+  icon: {fileID: 21300000, guid: 3fded348b362a3d42b5e5028e4915e90, type: 3}

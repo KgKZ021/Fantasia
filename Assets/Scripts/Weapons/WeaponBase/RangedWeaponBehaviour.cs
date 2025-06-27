@@ -93,12 +93,13 @@ public class RangedWeaponBehaviour : MonoBehaviour
         transform.localScale = scale;
         transform.rotation = Quaternion.Euler(rotation);
     }
+
     protected virtual void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Monster"))
         {
             MonsterStats monster = other.GetComponent<MonsterStats>();
-            monster.TakeDamage(currentDamage);
+            monster.TakeDamage(GetCurrentDamage());
 
             ReducePierce();
         }
@@ -107,7 +108,7 @@ public class RangedWeaponBehaviour : MonoBehaviour
         {
             if(other.gameObject.TryGetComponent(out BreakableProps breakableProps))
             {
-                breakableProps.TakeDamage(currentDamage);
+                breakableProps.TakeDamage(GetCurrentDamage());
 
                 ReducePierce();
             }
@@ -121,5 +122,10 @@ public class RangedWeaponBehaviour : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    public float GetCurrentDamage()
+    {
+        return currentDamage *= FindObjectOfType<PlayerStats>().CurrentMight;
     }
 }

@@ -71,6 +71,11 @@ public class Player : MonoBehaviour
 
     private void Movements()
     {
+        if (GameManager.Instance.isGameOver)
+        {
+            return;
+        }
+
         Vector2 inputVector = gameInput.GetMovementVectorNormalized();
         
 ;       Vector3 moveDir = new Vector3(inputVector.x, 0f, inputVector.y).normalized;
@@ -79,7 +84,7 @@ public class Player : MonoBehaviour
 
         if (isMoving)
         {
-            playerRigidBody.velocity = moveDir *playerStats.currentMoveSpeed;
+            playerRigidBody.velocity = moveDir * playerStats.CurrentMoveSpeed;
         }
         else
         {

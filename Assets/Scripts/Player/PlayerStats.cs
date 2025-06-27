@@ -1,21 +1,127 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class PlayerStats : MonoBehaviour
 {
     PlayerSO playerSO;
 
     //current stats
-    [HideInInspector] public float currentHealth;
-    [HideInInspector] public float currentRecovery;
-    [HideInInspector] public float currentMoveSpeed;
-    [HideInInspector] public float currentMight;
-    [HideInInspector] public float currentProjectileSpeed;
-    [HideInInspector] public float currentMagnet;
+    private float currentHealth;
+    private float currentRecovery;
+    private float currentMoveSpeed;
+    private float currentMight;
+    private float currentProjectileSpeed;
+    private float currentMagnet;
 
-    //Spawned Weapons
-    public List<GameObject> spawnedWeapons;
+
+    #region Current Stats Properties
+    public float CurrentHealth
+    {
+        get { return currentHealth; }
+        set
+        {
+            //check if the value changed
+            if (currentHealth != value)
+            {
+                currentHealth = value;
+
+                if (GameManager.Instance != null)
+                {
+                    GameManager.Instance.currentHealthDisplay.text = "Health: " + currentHealth;
+                }
+            }
+        }
+    }
+
+    public float CurrentRecovery
+    {
+        get { return currentRecovery; }
+        set
+        {
+            //check if the value changed
+            if (currentRecovery != value)
+            {
+                currentRecovery = value;
+
+                if (GameManager.Instance != null)
+                {
+                    GameManager.Instance.currentRecoveryDisplay.text = "Recovery: " + currentRecovery;
+                }
+            }
+        }
+    }
+    public float CurrentMoveSpeed
+    {
+        get { return currentMoveSpeed; }
+        set
+        {
+            //check if the value changed
+            if (currentMoveSpeed != value)
+            {
+                currentMoveSpeed = value;
+
+                if (GameManager.Instance != null)
+                {
+                    GameManager.Instance.currentMoveSpeedDisplay.text = "Move Speed : " + currentMoveSpeed;
+                }
+            }
+        }
+    }
+    public float CurrentMight
+    {
+        get { return currentMight; }
+        set
+        {
+            //check if the value changed
+            if (currentMight != value)
+            {
+                currentMight = value;
+
+                if (GameManager.Instance != null)
+                {
+                    GameManager.Instance.currentMightDisplay.text = "Might: " + currentMight;
+                }
+            }
+        }
+    }
+    public float CurrentProjectileSpeed
+    {
+        get { return currentProjectileSpeed; }
+        set
+        {
+            //check if the value changed
+            if (currentProjectileSpeed != value)
+            {
+                currentProjectileSpeed = value;
+
+                if (GameManager.Instance != null)
+                {
+                    GameManager.Instance.currentProjectileSpeedDisplay.text = "Projectile Speed: " + currentProjectileSpeed;
+                }
+            }
+        }
+    }
+    public float CurrentMagnet
+    {
+        get { return currentMagnet; }
+        set
+        {
+            //check if the value changed
+            if (currentMagnet != value)
+            {
+                currentMagnet = value;
+
+                if (GameManager.Instance != null)
+                {
+                    GameManager.Instance.currentMagnetDisplay.text = "Magnet: " + currentMagnet;
+                }
+            }
+        }
+    }
+    #endregion
+
 
     [Header("Experience/Level")]
     [SerializeField] private int experience = 0;
@@ -37,27 +143,49 @@ public class PlayerStats : MonoBehaviour
     private float invincibilityTimer;
     private bool isInvincible;
 
-
     [SerializeField] private List<LevelRange> levelsRanges;
+
+    InventoryManager inventoryManager;
+    [SerializeField] private int weaponIndex;
+    [SerializeField] private int passiveItemIndex;
+
+    public GameObject secondWeaponTest;
+    public GameObject firstPassiveItemTest;
+    public GameObject secondPassiveItemTest;
 
     private void Awake()
     {
         playerSO = CharacterSelector.GetData();
         CharacterSelector.Instance.DestorySingleton();
 
-        currentHealth = playerSO.MaxHealth;
-        currentRecovery = playerSO.Recovery;
-        currentMoveSpeed = playerSO.MoveSpeed;
-        currentMight = playerSO.Might;
-        currentProjectileSpeed = playerSO.ProjectileSpeed;
-        currentMagnet = playerSO.Magnet;
+        inventoryManager = GetComponent<InventoryManager>();
+
+        CurrentHealth = playerSO.MaxHealth;
+        CurrentRecovery = playerSO.Recovery;
+        CurrentMoveSpeed = playerSO.MoveSpeed;
+        CurrentMight = playerSO.Might;
+        CurrentProjectileSpeed = playerSO.ProjectileSpeed;
+        CurrentMagnet = playerSO.Magnet;
 
         SpawnWeapon(playerSO.StartingWeapon);
+        SpawnWeapon(secondWeaponTest);
+
+        SpawnPassiveItems(firstPassiveItemTest);
+        SpawnPassiveItems(secondPassiveItemTest);
     }
 
     private void Start()
     {
         experienceCap = levelsRanges[0].experienceCapIncrease;
+
+        GameManager.Instance.currentHealthDisplay.text = "Health: " + currentHealth;
+        GameManager.Instance.currentRecoveryDisplay.text = "Recovery: " + currentRecovery;
+        GameManager.Instance.currentMoveSpeedDisplay.text = "Move Speed: " + currentMoveSpeed;
+        GameManager.Instance.currentMightDisplay.text = "Might: " + currentMight;
+        GameManager.Instance.currentProjectileSpeedDisplay.text = "Projectile Speed: " + currentProjectileSpeed;
+        GameManager.Instance.currentMagnetDisplay.text = "Magnet: " + currentMagnet;
+
+        GameManager.Instance.AssignChosenCharacterUI(playerSO);
     }
 
     private void Update()
@@ -104,14 +232,16 @@ public class PlayerStats : MonoBehaviour
     {
         if(!isInvincible)
         {
-            currentHealth -= damage;
+            CurrentHealth -= damage;
 
             invincibilityTimer = invincibilityDuration;
             isInvincible = true;
 
-            if (currentHealth <= 0)
+            
+            if (CurrentHealth <= 0)
             {
                 Kill();
+               
             }
         }
         
@@ -119,18 +249,24 @@ public class PlayerStats : MonoBehaviour
 
     public void Kill()
     {
-        Debug.Log("KILLED!!!");
+        
+        if (!GameManager.Instance.isGameOver)
+        {
+            GameManager.Instance.AssignLevelReached(level);
+            GameManager.Instance.AssignChosenWeaponAndPassiveItemUI(inventoryManager.weaponUISlots, inventoryManager.passiveItemUISlots);
+            GameManager.Instance.GameOver();
+        }
     }
 
     public void RestoreHealth(float amount)
     {
-        if(currentHealth < playerSO.MaxHealth)
+        if(CurrentHealth < playerSO.MaxHealth)
         {
-            currentHealth += amount;
+            CurrentHealth += amount;
 
-            if(currentHealth > playerSO.MaxHealth)
+            if(CurrentHealth > playerSO.MaxHealth)
             {
-                currentHealth = playerSO.MaxHealth;
+                CurrentHealth = playerSO.MaxHealth;
             }
         }
         
@@ -138,22 +274,49 @@ public class PlayerStats : MonoBehaviour
 
     private void Recover()
     {
-        if(currentHealth < playerSO.MaxHealth)
+        if(CurrentHealth < playerSO.MaxHealth)
         {
-            currentHealth += currentRecovery * Time.deltaTime;
+            CurrentHealth += CurrentRecovery * Time.deltaTime;
 
             //fail safe
-            if(currentHealth > playerSO.MaxHealth)
+            if(CurrentHealth > playerSO.MaxHealth)
             {
-                currentHealth = playerSO.MaxHealth;
+                CurrentHealth = playerSO.MaxHealth;
             }
         }
     }
 
     public void SpawnWeapon(GameObject weapon)
     {
-        GameObject spawnedWeapon = Instantiate(weapon , transform.position,Quaternion.identity);
+        if(weaponIndex >= inventoryManager.weaponSlots.Count - 1)
+        {
+            Debug.LogError("Inventory slots already full");
+            return;
+        }
+
+        GameObject spawnedWeapon = Instantiate(weapon, transform.position, Quaternion.identity);
         spawnedWeapon.transform.SetParent(transform);
-        spawnedWeapons.Add(spawnedWeapon);
+
+        inventoryManager.AddWeapon(weaponIndex,spawnedWeapon.GetComponent<BaseWeapon>());
+
+        weaponIndex++;
     }
+
+    public void SpawnPassiveItems(GameObject passiveItems)
+    {
+        if (passiveItemIndex >= inventoryManager.passiveItemSlots.Count - 1)
+        {
+            Debug.LogError("Inventory slots already full");
+            return;
+        }
+
+        GameObject spawnedPassiveItem = Instantiate(passiveItems, transform.position, Quaternion.identity);
+        spawnedPassiveItem.transform.SetParent(transform);
+
+        inventoryManager.AddPassiveItems(passiveItemIndex, spawnedPassiveItem.GetComponent<PassiveItems>());
+
+        passiveItemIndex++;
+    }
+
+
 }

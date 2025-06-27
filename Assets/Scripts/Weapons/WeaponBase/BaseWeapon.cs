@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BaseWeapon : MonoBehaviour
 {
-    [SerializeField] private WeaponsSO weaponsSO;
+    public WeaponsSO weaponsSO;
     
 
     private float weaponTimer;

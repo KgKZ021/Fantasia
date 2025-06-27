@@ -40,14 +40,19 @@ public class MeleeWeaponBehaviour : MonoBehaviour
         if (other.CompareTag("Monster"))
         {
             MonsterStats monster = other.GetComponent<MonsterStats>();
-            monster.TakeDamage(currentDamage);
+            monster.TakeDamage(GetCurrentDamage());
         }
         else if (other.CompareTag("Prop"))
         {
             if (other.gameObject.TryGetComponent(out BreakableProps breakableProps))
             {
-                breakableProps.TakeDamage(currentDamage);
+                breakableProps.TakeDamage(GetCurrentDamage());
             }
         }
+    }
+
+    public float GetCurrentDamage()
+    {
+        return currentDamage *= FindObjectOfType<PlayerStats>().CurrentMight;
     }
 }

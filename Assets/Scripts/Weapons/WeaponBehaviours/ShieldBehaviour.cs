@@ -17,7 +17,7 @@ public class ShieldBehaviour : MeleeWeaponBehaviour
         if (other.CompareTag("Monster") && !markedMonsters.Contains(other.gameObject))
         {
             MonsterStats monster = other.GetComponent<MonsterStats>();
-            monster.TakeDamage(currentDamage);
+            monster.TakeDamage(GetCurrentDamage());
 
             markedMonsters.Add(other.gameObject);
         }
@@ -25,7 +25,7 @@ public class ShieldBehaviour : MeleeWeaponBehaviour
         {
             if (other.gameObject.TryGetComponent(out BreakableProps breakableProps) && !markedMonsters.Contains(other.gameObject))
             {
-                breakableProps.TakeDamage(currentDamage);
+                breakableProps.TakeDamage(GetCurrentDamage());
 
                 markedMonsters.Add(other.gameObject);
             }
