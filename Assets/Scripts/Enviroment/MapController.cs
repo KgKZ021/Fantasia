@@ -7,11 +7,12 @@ public class MapController : MonoBehaviour
     [SerializeField] private List<GameObject> envChunk;
     [SerializeField] private Player player;
     [SerializeField] private LayerMask layerMask;
-    [SerializeField] private GameInput gameInput;
     [SerializeField] private float checkRadius;
 
     public GameObject currentChunk;
-    private Vector3 noEnvPosition;
+    
+
+    private Vector3 playerLastPosition;
 
 
     [Header("Optimization")]
@@ -35,6 +36,10 @@ public class MapController : MonoBehaviour
         LeftDown
     }
 
+    private void Start()
+    {
+        playerLastPosition = player.transform.position;
+    }
 
     private void Update()
     {
@@ -49,61 +54,106 @@ public class MapController : MonoBehaviour
         {
             return;
         }
-        Vector2 inputVector = gameInput.GetMovementVectorNormalized();
-
-        if (inputVector.x > 0 && inputVector.y == 0) // right
-        {
-            TrySpawnChunkAtOffset(Direction.Right);
-        }
-        else if (inputVector.x < 0 && inputVector.y == 0) // left
-        {
-            TrySpawnChunkAtOffset(Direction.Left);
-        }
-        else if (inputVector.x == 0 && inputVector.y > 0) // up
-        {
-            TrySpawnChunkAtOffset(Direction.Up);
-        }
-        else if (inputVector.x == 0 && inputVector.y < 0) // down
-        {
-            TrySpawnChunkAtOffset(Direction.Down);
-        }
-        else if (inputVector.x > 0 && inputVector.y > 0) // right up
-        {
-            TrySpawnChunkAtOffset(Direction.RightUp);
-        }
-        else if (inputVector.x > 0 && inputVector.y < 0) // right down
-        {
-            TrySpawnChunkAtOffset(Direction.RightDown);
-        }
-        else if (inputVector.x < 0 && inputVector.y > 0) // left up
-        {
-            TrySpawnChunkAtOffset(Direction.LeftUp);
-        }
-        else if (inputVector.x < 0 && inputVector.y < 0) // left down
-        {
-            TrySpawnChunkAtOffset(Direction.LeftDown);
-        }
-
-    }
-
-    void TrySpawnChunkAtOffset(Direction direction)
-    {
-        string directionString = direction.ToString();
-        Vector3 targetPos = currentChunk.transform.Find("StaticPoints/"+directionString).position;
         
+        Vector3 moveDir = player.transform.position - playerLastPosition;
+        playerLastPosition = player.transform.position;
+
+        string directionName = GetDirectionName(moveDir);
+
+        Vector3 targetPos = currentChunk.transform.Find("StaticPoints/" + directionName).position;
 
         Collider[] hits = Physics.OverlapSphere(targetPos, checkRadius, layerMask);
+        
         if (hits.Length == 0)
         {
-            noEnvPosition = targetPos;
-            SpawnChunk();
+            SpawnChunk(targetPos);
+
+            //adjecent chunks of diagonal direction
+
+            CheckAndSpawnChunk(directionName);
+
+            if(directionName.Contains("Up"))
+            {
+                CheckAndSpawnChunk("Up");
+            }
+            if (directionName.Contains("Down"))
+            {
+                CheckAndSpawnChunk("Down");
+            }
+            if (directionName.Contains("Right"))
+            {
+                CheckAndSpawnChunk("Right");
+            }
+            if (directionName.Contains("Left"))
+            {
+                CheckAndSpawnChunk("Left");
+            }
+        }
+
+    }
+
+    private void CheckAndSpawnChunk(string direction)
+    {
+        Collider[] upCheck = Physics.OverlapSphere(currentChunk.transform.Find("StaticPoints/" + direction).position, checkRadius, layerMask);
+        if (upCheck.Length == 0)
+        {
+            SpawnChunk(currentChunk.transform.Find("StaticPoints/" + direction).position);
+        }
+    }
+    private string GetDirectionName(Vector3 direction)
+    {
+        direction = direction.normalized;
+
+        if(Mathf.Abs(direction.x) > Mathf.Abs(direction.z))
+        {
+            if(direction.z > 0.5f)
+            {
+                return direction.x > 0 ? "RightUp" : "LeftUp";
+            }
+            else if(direction.z < -0.5f)
+            {
+                return direction.x > 0 ? "RightDown" : "LeftDown";
+            }
+            else
+            {
+                return direction.x > 0 ? "Right" : "Left";
+            }
+        }
+        else
+        {
+            if (direction.x > 0.5f)
+            {
+                return direction.z > 0 ? "RightUp" : "RightDown";
+            }
+            else if (direction.x < -0.5f)
+            {
+                return direction.z > 0 ? "LeftUp" : "LeftDown";
+            }
+            else
+            {
+                return direction.z > 0 ? "Up" : "Down";
+            }
         }
     }
 
-    private void SpawnChunk()
+    //void TrySpawnChunkAtOffset(Direction direction)
+    //{
+    //    string directionString = direction.ToString();
+    //    Vector3 targetPos = currentChunk.transform.Find("StaticPoints/"+directionString).position;
+        
+
+    //    Collider[] hits = Physics.OverlapSphere(targetPos, checkRadius, layerMask);
+    //    if (hits.Length == 0)
+    //    {
+    //        noEnvPosition = targetPos;
+    //        SpawnChunk();
+    //    }
+    //}
+
+    private void SpawnChunk(Vector3 spawnPosition)
     {
         int random = Random.Range(0, envChunk.Count);
-        latestChunk = Instantiate(envChunk[random],noEnvPosition, Quaternion.identity);
+        latestChunk = Instantiate(envChunk[random], spawnPosition, Quaternion.identity);
         spawnedChunks.Add(latestChunk);
 
     }

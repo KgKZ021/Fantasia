@@ -7,7 +7,7 @@ using UnityEngine;
 /// </summary>
 public class MeleeWeaponBehaviour : MonoBehaviour
 {
-    [SerializeField] WeaponsSO weaponSO;
+    public WeaponsSO weaponSO;
 
     private float destoryAfterSeconds = 2;
 

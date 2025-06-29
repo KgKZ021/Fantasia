@@ -34,6 +34,7 @@ public class MonsterSpawner : MonoBehaviour
     [SerializeField] private int monstersAlive;
     [SerializeField] private bool maxMonstersReached = false;
     [SerializeField] private float waveInterval;
+    private bool isWaveActive = false;
 
     [Header("Spawned Positions")]
     [SerializeField] public List<Transform> relativeSpawnPoints;
@@ -49,7 +50,7 @@ public class MonsterSpawner : MonoBehaviour
 
     private void Update()
     {
-        if (currentWaveCount < waves.Count && waves[currentWaveCount].spawnCount == 0)
+        if (currentWaveCount < waves.Count && waves[currentWaveCount].spawnCount == 0 && !isWaveActive)
         {
             StartCoroutine(BeginNextWave());
         }
@@ -58,6 +59,7 @@ public class MonsterSpawner : MonoBehaviour
 
         if (spawnTimer >= waves[currentWaveCount].spawnInterval)
         {
+            isWaveActive = false ;
             spawnTimer = 0f;
             SpawnMonsters();
         }
@@ -65,6 +67,8 @@ public class MonsterSpawner : MonoBehaviour
 
     IEnumerator BeginNextWave()
     {
+        isWaveActive = true;
+
         yield return new WaitForSeconds(waveInterval);
 
         if(currentWaveCount<waves.Count-1)
@@ -102,29 +106,31 @@ public class MonsterSpawner : MonoBehaviour
                 //Check if the min number of enemies of thistype has been spawned
                 if(monsterGroup.spawnCount < monsterGroup.monsterCount)
                 {
-                    if(monstersAlive >= maxMonstersAllowed)
-                    {
-                        maxMonstersReached = true;
-                        return;
-                    }
-
                     Instantiate(monsterGroup.monsterPrefab, player.position + relativeSpawnPoints[Random.Range(0,relativeSpawnPoints.Count)].position,Quaternion.identity);
 
                     monsterGroup.spawnCount++;
                     waves[currentWaveCount ].spawnCount++;
                     monstersAlive++;
+
+                    if (monstersAlive >= maxMonstersAllowed)
+                    {
+                        maxMonstersReached = true;
+                        return;
+                    }
                 }
             }
         }
-        if(monstersAlive < maxMonstersAllowed)
-        {
-            maxMonstersReached =  false;
-        }
+        
     }
 
     //Call when an enemy is killed
     public void OnMonsterKilled()
     {
         monstersAlive--;
+
+        if (monstersAlive < maxMonstersAllowed)
+        {
+            maxMonstersReached = false;
+        }
     }
 }

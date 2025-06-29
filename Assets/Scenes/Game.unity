@@ -1624,11 +1624,21 @@ MonoBehaviour:
     waveQuota: 0
     spawnInterval: 1
     spawnCount: 0
+  - waveName: Wave 2
+    monsterGroup:
+    - monsterName: FirePig_V2
+      monsterCount: 2
+      spawnCount: 0
+      monsterPrefab: {fileID: 1954406165797268113, guid: 88a775150ba8a3b4eb015ae1cf519d66,
+        type: 3}
+    waveQuota: 0
+    spawnInterval: 3
+    spawnCount: 0
   currentWaveCount: 0
-  maxMonstersAllowed: 4
+  maxMonstersAllowed: 3
   monstersAlive: 0
   maxMonstersReached: 0
-  waveInterval: 3
+  waveInterval: 5
   relativeSpawnPoints:
   - {fileID: 684260299}
   - {fileID: 1830778699}
@@ -2499,6 +2509,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1e9a68754e0603742846f96482407454, type: 3}
+--- !u!1 &375116455 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8957506588541115447, guid: 1e9a68754e0603742846f96482407454,
+    type: 3}
+  m_PrefabInstance: {fileID: 375116454}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -3098,8 +3114,8 @@ RectTransform:
   m_Children:
   - {fileID: 953621334}
   - {fileID: 139335773}
-  - {fileID: 1230362130}
   - {fileID: 1293256882}
+  - {fileID: 1230362130}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -5398,7 +5414,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 180, y: -150}
+  m_AnchoredPosition: {x: 176, y: -202}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &953621335
@@ -6636,9 +6652,8 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 128
-  gameInput: {fileID: 1024692272}
   checkRadius: 0.2
-  currentChunk: {fileID: 0}
+  currentChunk: {fileID: 375116455}
   maxOptimizationDistance: 70
   optimizerCooldownDuration: 1
   spawnedChunks: []
@@ -8569,7 +8584,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Menu
+          m_StringArgument: Title
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1532665042
@@ -10393,16 +10408,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1107794573}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: ResumeGame
-        m_Mode: 1
+      - m_Target: {fileID: 1107794575}
+        m_TargetAssemblyTypeName: SceneController, Assembly-CSharp
+        m_MethodName: SceneChange
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: Title
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1946709603

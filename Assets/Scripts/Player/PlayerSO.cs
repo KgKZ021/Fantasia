@@ -31,4 +31,10 @@ public class PlayerSO : ScriptableObject
 
     [SerializeField] private new string name;
     public string Name { get => name;   set => name = value; }
+
+    [SerializeField] private string fullName;
+    public string FullName { get => fullName; set => fullName = value; }
+
+    [SerializeField] private string description;
+    public string Description { get => description; set => description = value; }
 }

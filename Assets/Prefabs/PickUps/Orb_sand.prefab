@@ -14307,6 +14307,7 @@ GameObject:
   - component: {fileID: 1095742708486833632}
   - component: {fileID: 4623085424724441868}
   - component: {fileID: -7802532816491872172}
+  - component: {fileID: 3149917012315609559}
   m_Layer: 0
   m_Name: Orb_sand
   m_TagString: Untagged
@@ -14323,7 +14324,7 @@ Transform:
   m_GameObject: {fileID: 3460875656508149677}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.1, z: 0}
+  m_LocalPosition: {x: 0, y: 2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -19186,7 +19187,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ca3b08c8d12cca478c0811db351072f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  expGranted: 100
+  expGranted: 30
 --- !u!54 &-7802532816491872172
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -19214,6 +19215,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &3149917012315609559
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3460875656508149677}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 394359aab52a0994980379112351eb18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  frequency: 3
+  magnitude: 0.3
+  direction: {x: 0, y: 1, z: 0}
 --- !u!1 &6344565166866151602
 GameObject:
   m_ObjectHideFlags: 0

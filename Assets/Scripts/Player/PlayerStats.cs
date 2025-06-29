@@ -162,10 +162,11 @@ public class PlayerStats : MonoBehaviour
 
     private void Awake()
     {
-        playerSO = CharacterSelector.GetData();
-        CharacterSelector.Instance.DestorySingleton();
+        playerSO = UICharacterSelector.GetData();
+        //UICharacterSelector.Instance.DestorySingleton();
 
         inventoryManager = GetComponent<InventoryManager>();
+        
 
         CurrentHealth = playerSO.MaxHealth;
         CurrentRecovery = playerSO.Recovery;

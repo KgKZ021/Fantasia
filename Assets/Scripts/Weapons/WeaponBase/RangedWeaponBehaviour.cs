@@ -7,7 +7,7 @@ using UnityEngine;
 /// </summary>
 public class RangedWeaponBehaviour : MonoBehaviour
 {
-    [SerializeField]protected WeaponsSO weaponSO;
+    public WeaponsSO weaponSO;
 
     protected Vector3 weaponDir;
     private float destoryAfterSeconds = 3;

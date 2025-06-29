@@ -42,6 +42,21 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3157364685276636342, guid: 5b7c28b3f7ac88a4fb3aad9a79608c45,
         type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3157364685276636342, guid: 5b7c28b3f7ac88a4fb3aad9a79608c45,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3157364685276636342, guid: 5b7c28b3f7ac88a4fb3aad9a79608c45,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3157364685276636342, guid: 5b7c28b3f7ac88a4fb3aad9a79608c45,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -90,6 +105,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3157364685276636342, guid: 5b7c28b3f7ac88a4fb3aad9a79608c45,
+        type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7206958459557730559, guid: 5b7c28b3f7ac88a4fb3aad9a79608c45,
         type: 3}
       propertyPath: m_Name
@@ -119,6 +139,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 4945198960583041101}
+    - targetCorrespondingSourceObject: {fileID: 7206958459557730559, guid: 5b7c28b3f7ac88a4fb3aad9a79608c45,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1331240003372060159}
   m_SourcePrefab: {fileID: 100100000, guid: 5b7c28b3f7ac88a4fb3aad9a79608c45, type: 3}
 --- !u!1 &2920757627186929850 stripped
 GameObject:
@@ -187,6 +211,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1331240003372060159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2920757627186929850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 394359aab52a0994980379112351eb18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  frequency: 3
+  magnitude: 0.3
+  direction: {x: 0, y: 1, z: 0}
 --- !u!4 &7448366014373616883 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3157364685276636342, guid: 5b7c28b3f7ac88a4fb3aad9a79608c45,
