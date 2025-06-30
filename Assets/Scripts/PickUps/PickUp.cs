@@ -18,4 +18,6 @@ public class PickUp : MonoBehaviour , ICollectible
             Destroy(gameObject);
         }
     }
+
+   
 }

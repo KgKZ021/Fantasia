@@ -8,10 +8,37 @@ public class PlayerCollector : MonoBehaviour
     private SphereCollider playerCollectRange;
     public float pullSpeed;
 
+    public delegate void OnCoinCollected();
+    public OnCoinCollected onCoinCollected;
+
+    float coins;
+
     private void Start()
     {
         playerStats = FindObjectOfType<PlayerStats>();
         playerCollectRange = GetComponent<SphereCollider>();
+
+        coins = 0;
+    }
+
+
+    public float GetCoins()
+    {
+        return coins;
+    }
+
+    public float AddCoins(float amount)
+    {
+        coins += amount;
+        onCoinCollected();
+        return coins;
+    }
+
+    public void SaveCoinsToStash()
+    {
+        SaveManager.LastLoadedGameData.coins += coins;
+        coins = 0;
+        SaveManager.Save();
     }
 
     private void Update()

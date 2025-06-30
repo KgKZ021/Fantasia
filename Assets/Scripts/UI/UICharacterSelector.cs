@@ -87,8 +87,15 @@ public class UICharacterSelector : MonoBehaviour
         characterFullName.text = character.FullName;
         characterDescription.text = character.Description;
         selectedCharacterIcon.sprite = character.Icon;
-        WeaponsSO weaponSprite = character.StartingWeapon.GetComponent<WeaponsSO>();
-        selectedCharacterWeapon.sprite = weaponSprite.Icon;
+        BaseWeapon controller = character.StartingWeapon.GetComponent<BaseWeapon>();
+        if (controller != null && controller.weaponsSO != null)
+        {
+            selectedCharacterWeapon.sprite = controller.weaponsSO.Icon;
+        }
+        else
+        {
+            Debug.LogWarning("WeaponController or weaponData missing on StartingWeapon prefab.");
+        }
     }
     private void Awake()
     {

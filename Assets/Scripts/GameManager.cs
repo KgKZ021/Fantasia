@@ -68,6 +68,12 @@ public class GameManager : MonoBehaviour
 
         DisableScreen();
     }
+
+    private void Start()
+    {
+        SaveManager.Load();
+    }
+
     private void Update()
     {
         switch (currentState)
