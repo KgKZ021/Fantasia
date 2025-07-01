@@ -8,12 +8,7 @@ using UnityEngine.SceneManagement;
 /// </summary>
 public class SceneController : MonoBehaviour
 {
-    [SerializeField] private UISavedDataDisplay savedDataDisplay;
-
-    private void Start()
-    {
-        savedDataDisplay = GetComponent<UISavedDataDisplay>();
-    }
+    
     public void SceneChange(string name)
     {
         SceneManager.LoadScene(name);

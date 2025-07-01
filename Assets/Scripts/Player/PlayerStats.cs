@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class PlayerStats : MonoBehaviour
 {
-    PlayerSO playerSO;
+    public PlayerSO playerSO;
 
     //current stats
     private float currentHealth;

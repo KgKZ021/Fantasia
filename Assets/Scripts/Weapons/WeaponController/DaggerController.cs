@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,7 +6,7 @@ using UnityEngine.EventSystems;
 
 public class DaggerController : BaseWeapon
 {
-   
+    public static event EventHandler OnDaggerAttack;
     protected override void Start()
     {
         base.Start();
@@ -25,5 +26,6 @@ public class DaggerController : BaseWeapon
         spawnedDagger.GetComponent<DaggerBehaviour>().DirectionChecker(
             new Vector3(GameInput.Instance.lastMovedVector.x, 0, GameInput.Instance.lastMovedVector.y)
         );
+        OnDaggerAttack?.Invoke(this, EventArgs.Empty);
     }
 }

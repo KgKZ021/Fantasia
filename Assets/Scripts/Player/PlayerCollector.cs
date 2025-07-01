@@ -31,13 +31,14 @@ public class PlayerCollector : MonoBehaviour
     {
         coins += amount;
         onCoinCollected();
+        Debug.Log("Coins:"+ coins);
         return coins;
     }
 
     public void SaveCoinsToStash()
     {
         SaveManager.LastLoadedGameData.coins += coins;
-        coins = 0;
+        //coins = 0;
         SaveManager.Save();
     }
 
@@ -51,8 +52,15 @@ public class PlayerCollector : MonoBehaviour
         if(other.gameObject.TryGetComponent(out ICollectible collectible))
         {
             Rigidbody rigidbody = other.gameObject.GetComponent<Rigidbody>();
+
+            if (other.TryGetComponent(out BobbingAnimation bob))
+            {
+                bob.enabled = false;
+            }
             Vector3 forceDir = (transform.position - other.transform.position).normalized;
             rigidbody.AddForce(forceDir * pullSpeed);
+
+            Debug.Log("pulled");
 
             collectible.Collect();
         }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
@@ -106,7 +107,7 @@ public class MonsterSpawner : MonoBehaviour
                 //Check if the min number of enemies of thistype has been spawned
                 if(monsterGroup.spawnCount < monsterGroup.monsterCount)
                 {
-                    Instantiate(monsterGroup.monsterPrefab, player.position + relativeSpawnPoints[Random.Range(0,relativeSpawnPoints.Count)].position,Quaternion.identity);
+                    Instantiate(monsterGroup.monsterPrefab, player.position + relativeSpawnPoints[UnityEngine.Random.Range(0,relativeSpawnPoints.Count)].position,Quaternion.identity);
 
                     monsterGroup.spawnCount++;
                     waves[currentWaveCount ].spawnCount++;
@@ -127,7 +128,6 @@ public class MonsterSpawner : MonoBehaviour
     public void OnMonsterKilled()
     {
         monstersAlive--;
-
         if (monstersAlive < maxMonstersAllowed)
         {
             maxMonstersReached = false;

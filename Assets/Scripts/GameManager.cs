@@ -4,9 +4,12 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEditor;
+using System;
 
 public class GameManager : MonoBehaviour
 {
+    public event EventHandler OnGameOver;
+
     public static GameManager Instance;
 
     public enum GameState
@@ -93,6 +96,7 @@ public class GameManager : MonoBehaviour
 
                     Debug.Log("GAME OVER");
                     DisplayResults();
+                    
                 }
                 break;
             case GameState.LevelUp:
@@ -173,6 +177,8 @@ public class GameManager : MonoBehaviour
         timeSurvivedDisplay.text = stopWatchDisplay.text;
 
         ChangeState(GameState.GameOver);
+
+        OnGameOver?.Invoke(this, EventArgs.Empty);
     }
 
     private void DisplayResults()

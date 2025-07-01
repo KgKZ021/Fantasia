@@ -9,7 +9,7 @@ using UnityEngine;
 /// </summary>
 public class SaveManager : MonoBehaviour
 {
-    public const float COINS_PER_SECOND = 1f;
+    public const float COINS_PER_SECOND = 0.01f;
     public class GameData
     {
         public float coins;

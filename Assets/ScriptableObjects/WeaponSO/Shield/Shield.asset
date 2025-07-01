@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 7082947265978245355, guid: 3617a274030577b4e93ba2482b0c1291, type: 3}
   weaponName: Shield
-  duration: 3
+  duration: 5
   baseDamage: 5
   speed: 0
   pierce: 0

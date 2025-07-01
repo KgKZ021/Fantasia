@@ -31,7 +31,6 @@ public class UISavedDataDisplay : MonoBehaviour
         {
             float savedCoins = SaveManager.LastLoadedGameData.coins;
             coinDisplay.text = $"{Mathf.RoundToInt(savedCoins)}";
-            Debug.Log("InsideDisplay if");
         }
         else
         {

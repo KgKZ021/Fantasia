@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d127ffb7fea0b2745a57a49c2ba04f80, type: 3}
+  m_Name: AudioClipRefSO
+  m_EditorClassIdentifier: 
+  footStep:
+  - {fileID: 8300000, guid: 078e15982fce2e147bf06c8a7682f28b, type: 3}
+  - {fileID: 8300000, guid: 078e15982fce2e147bf06c8a7682f28b, type: 3}
+  - {fileID: 8300000, guid: b2d2893ac04fbdb44a226f4b6ea0d271, type: 3}
+  - {fileID: 8300000, guid: cc97c340134faa948bcaf20fea6429c6, type: 3}
+  - {fileID: 8300000, guid: 64a04bb4fa4ed5d4eac6b0a31f91843a, type: 3}
+  success:
+  - {fileID: 8300000, guid: 50205ffe58351d244bbcbd725dbfa802, type: 3}
+  - {fileID: 8300000, guid: 4b22bfbdbacfa0445bc9bbfbb0141085, type: 3}
+  coin:
+  - {fileID: 8300000, guid: 7d64b6a17491d1e4bbcee7aa38a8b203, type: 3}
+  - {fileID: 8300000, guid: 39d2654e9a2c9b145884e4046d50eed1, type: 3}
+  dagger:
+  - {fileID: 8300000, guid: 205e5fc8df000784b96f3273b30fe945, type: 3}
+  - {fileID: 8300000, guid: 8b5e283678aa74c45b556681cdde1828, type: 3}
+  - {fileID: 8300000, guid: 93de950062a296849a48d5ed7f6a6358, type: 3}
+  - {fileID: 8300000, guid: 0d1487be3e013d440ab63114a36170df, type: 3}
+  - {fileID: 8300000, guid: f8a9853b852eb8d469526de70470c1f6, type: 3}
+  - {fileID: 8300000, guid: 8910569d547566146b9262e60aaa9ea4, type: 3}
+  - {fileID: 8300000, guid: a315a7104ad2f684b8a19ea31ee77749, type: 3}
+  - {fileID: 8300000, guid: f74919a306a7a0848812e43b829c7f45, type: 3}
+  - {fileID: 8300000, guid: b38d7330e805b0d478cae85f47d86c5f, type: 3}
+  shield:
+  - {fileID: 8300000, guid: 45c2a6191cdd49344881f8da33a92cc7, type: 3}
+  - {fileID: 8300000, guid: 546d866f22f5bdd4ab0af9837dbc0d01, type: 3}
+  - {fileID: 8300000, guid: c3a8d866b2945e64a9de0bd60c0a8543, type: 3}
+  - {fileID: 8300000, guid: 5ca75fe38a56818418dc7c9d8ef7f5c5, type: 3}
+  pickUp:
+  - {fileID: 8300000, guid: 668de61a04ca5914aa745f8712c62720, type: 3}
+  - {fileID: 8300000, guid: 6728bf8b07482414e99ba965fdd022d8, type: 3}
+  - {fileID: 8300000, guid: 32d29abc86751884081d2005f9ff2676, type: 3}
+  monsterBite:
+  - {fileID: 8300000, guid: fff722932178d694abdae68fd53a6dc3, type: 3}
+  - {fileID: 8300000, guid: 7ff2d6cbb4856ee488f2fa889edf7654, type: 3}
+  - {fileID: 8300000, guid: 4fc64a3e2046b7b48bebf6a6426b5126, type: 3}
+  killed:
+  - {fileID: 8300000, guid: 3501d88e16ed40546a26a7829645d59d, type: 3}
+  - {fileID: 8300000, guid: 1c32f0976d1af7d4ba7345e3717a1bd8, type: 3}
+  - {fileID: 8300000, guid: bd159cb73cccac04f8e75efa77aff99e, type: 3}
+  - {fileID: 8300000, guid: 103670433e6ef664bb86fe595b2376cf, type: 3}
+  - {fileID: 8300000, guid: 37a07c73054d9334a98c9785e8785441, type: 3}
+  - {fileID: 8300000, guid: aca53ae0aeac31e4281f12a3a0cd20ca, type: 3}

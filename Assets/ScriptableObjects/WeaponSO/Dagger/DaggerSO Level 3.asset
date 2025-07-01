@@ -14,12 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 2920757627186929850, guid: 1044ff0a9be7e04488371cfed52c533b, type: 3}
   weaponName: Dagger
-  duration: 2
+  duration: 1.5
   baseDamage: 5
   speed: 15
   pierce: 1
   level: 2
   nextLevelPrefab: {fileID: 0}
   name: Dagger Level 2
-  description: Speed is up by 5
+  description: CD reduced to 1.5
   icon: {fileID: 21300000, guid: ef7d23773058d864c8d3c8d514529e24, type: 3}

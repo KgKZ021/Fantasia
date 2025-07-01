@@ -32,10 +32,7 @@ public class BaseWeapon : MonoBehaviour
     {
         weaponTimer = weaponsSO.Duration;
     }
-    public virtual void Collected(Player player)
-    {
-        Debug.LogError("BaseCounter.Intercat();");
-    }
+    
 
     public WeaponsSO GetWeaponSO()
     {
