@@ -1,7 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
+
 using TMPro;
 using UnityEngine.UI;
 using System.Xml;
@@ -33,32 +37,28 @@ public class UICharacterSelector : MonoBehaviour
         if (playerSO) Select(playerSO);
     }
 
-    public static PlayerSO[] GetAllPlayerSOAssets()
-    {
-        List<PlayerSO> characters = new List<PlayerSO>();
+    // This list is filled in editor only
+    private static List<PlayerSO> editorCharacterCache = new List<PlayerSO>();
 
-        //Populate the list with PlayerSO assets
 #if UNITY_EDITOR
+    [UnityEditor.Callbacks.DidReloadScripts]
+    private static void RefreshCharacterListEditorOnly()
+    {
+        editorCharacterCache.Clear();
         string[] allAssetPaths = AssetDatabase.GetAllAssetPaths();
         foreach (string assetPath in allAssetPaths)
         {
-            if(assetPath.EndsWith(".asset"))
+            if (assetPath.EndsWith(".asset"))
             {
                 PlayerSO playerSO = AssetDatabase.LoadAssetAtPath<PlayerSO>(assetPath);
-                if(playerSO != null)
+                if (playerSO != null)
                 {
-                    characters.Add(playerSO);
-                    
+                    editorCharacterCache.Add(playerSO);
                 }
             }
         }
-#else
-        Debug.LogWarning("This function cannot be called");
-#endif
-        
-        return characters.ToArray();
-        
     }
+#endif
 
     public static PlayerSO GetData()
     {
@@ -68,14 +68,21 @@ public class UICharacterSelector : MonoBehaviour
         }
         else
         {
-            PlayerSO[] characters = GetAllPlayerSOAssets();
-            if (characters.Length > 0)
+#if UNITY_EDITOR
+            if (editorCharacterCache.Count == 0)
             {
-                Debug.Log("In here" + characters[Random.Range(0, characters.Length)]);
-                return characters[Random.Range(0, characters.Length)];
-
-
+                RefreshCharacterListEditorOnly();
             }
+
+            if (editorCharacterCache.Count > 0)
+            {
+                PlayerSO random = editorCharacterCache[Random.Range(0, editorCharacterCache.Count)];
+                Debug.Log("Selected from editor assets: " + random);
+                return random;
+            }
+#else
+            Debug.LogWarning("GetData() is trying to load editor-only assets in a build. Use runtime-safe data.");
+#endif
         }
         return null;
     }

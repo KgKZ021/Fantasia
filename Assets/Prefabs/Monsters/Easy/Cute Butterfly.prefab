@@ -606,11 +606,11 @@ MonoBehaviour:
   - name: Orb Sand
     itemPrefab: {fileID: 3460875656508149677, guid: ea25565b12d651e4db46dd587ef8cdbf,
       type: 3}
-    dropRate: 60
+    dropRate: 100
   - name: Orb Sand
     itemPrefab: {fileID: 3460875656508149677, guid: ea25565b12d651e4db46dd587ef8cdbf,
       type: 3}
-    dropRate: 30
+    dropRate: 80
   - name: Coin
     itemPrefab: {fileID: 8849441322715456412, guid: 026f5561b361cb84c805615e38468276,
       type: 3}

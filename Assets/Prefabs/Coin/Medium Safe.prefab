@@ -110,8 +110,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.8011738, y: 0.54910725, z: 0.6648228}
-  m_Center: {x: -0.00041576228, y: 0.21058182, z: -0.013800463}
+  m_Size: {x: 0.9605236, y: 0.7241936, z: 0.8403506}
+  m_Center: {x: -0.0034412544, y: 0.21152973, z: 0.0032426517}
 --- !u!1 &4511502940668709405
 GameObject:
   m_ObjectHideFlags: 0
